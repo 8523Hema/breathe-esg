@@ -7,8 +7,6 @@ import Review from './views/Review';
 import Audit  from './views/Audit';
 
 function ProtectedLayout() {
-  const { isAuthenticated } = useAuth();
-  if (!isAuthenticated) return <Navigate to="/login" replace />;
   return (
     <div className="min-h-screen bg-[#F0F4FF] flex flex-col">
       <Navbar />
@@ -29,9 +27,7 @@ function ProtectedLayout() {
 }
 
 function AuthRoute() {
-  const { isAuthenticated } = useAuth();
-  if (isAuthenticated) return <Navigate to="/" replace />;
-  return <Login />;
+  return <Navigate to="/" replace />;
 }
 
 export default function App() {
