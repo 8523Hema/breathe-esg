@@ -5,9 +5,18 @@ const AuthContext = createContext();
 
 export const useAuth = () => useContext(AuthContext);
 
+const getBaseURL = () => {
+  if (import.meta.env.VITE_API_URL) {
+    return `${import.meta.env.VITE_API_URL}/api`;
+  }
+  if (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
+    return '/api';
+  }
+  return 'https://breathe-esg-backend-fj8t.onrender.com/api';
+};
+
 export const api = axios.create({
-  // Use VITE_API_URL when configured (production), fall back to Vite proxy in local dev
-  baseURL: import.meta.env.VITE_API_URL ? `${import.meta.env.VITE_API_URL}/api` : '/api',
+  baseURL: getBaseURL(),
 });
 
 export const AuthProvider = ({ children }) => {
