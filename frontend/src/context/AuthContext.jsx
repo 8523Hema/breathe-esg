@@ -6,11 +6,11 @@ const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
 
 const getBaseURL = () => {
-  if (import.meta.env.VITE_API_URL) {
-    return `${import.meta.env.VITE_API_URL}/api`;
-  }
   if (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
     return '/api';
+  }
+  if (import.meta.env.VITE_API_URL) {
+    return `${import.meta.env.VITE_API_URL}/api`;
   }
   return 'https://breathe-esg-backend-fj8t.onrender.com/api';
 };
