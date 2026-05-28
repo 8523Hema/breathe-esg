@@ -27,12 +27,19 @@ def main():
             from django.contrib.auth import get_user_model
             User = get_user_model()
             try:
-                # Create admin / admin123 (superuser)
+                # Create or update admin / admin123 (superuser)
                 if not User.objects.filter(username="admin").exists():
                     User.objects.create_superuser("admin", "admin@acme.com", "admin123")
                     print("Successfully created demo superuser: admin")
+                else:
+                    admin_user = User.objects.get(username="admin")
+                    admin_user.set_password("admin123")
+                    admin_user.is_superuser = True
+                    admin_user.is_staff = True
+                    admin_user.save()
+                    print("Reset demo superuser password to admin123")
                 
-                # Create analyst / analyst123 (normal user)
+                # Create or update analyst / analyst123 (normal user)
                 if not User.objects.filter(username="analyst").exists():
                     User.objects.create_user(
                         username="analyst",
@@ -41,6 +48,12 @@ def main():
                         is_staff=True
                     )
                     print("Successfully created demo analyst user: analyst")
+                else:
+                    analyst_user = User.objects.get(username="analyst")
+                    analyst_user.set_password("analyst123")
+                    analyst_user.is_staff = True
+                    analyst_user.save()
+                    print("Reset demo analyst password to analyst123")
             except Exception:
                 pass
 
