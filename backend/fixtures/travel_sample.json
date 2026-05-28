@@ -1,0 +1,10 @@
+[
+  {"trip_id":"T001","traveler":"alice@acme.com","segment_type":"air","origin":"BOM","destination":"LHR","date":"2024-01-10","cost_center":"CC_SALES","class":"economy"},
+  {"trip_id":"T001","traveler":"alice@acme.com","segment_type":"hotel","city":"London","nights":3,"date":"2024-01-10","cost_center":"CC_SALES"},
+  {"trip_id":"T002","traveler":"bob@acme.com","segment_type":"air","origin":"DEL","destination":"JFK","date":"2024-01-15","cost_center":"CC_EXEC","class":"business"},
+  {"trip_id":"T002","traveler":"bob@acme.com","segment_type":"hotel","city":"New York","nights":4,"date":"2024-01-15","cost_center":"CC_EXEC"},
+  {"trip_id":"T003","traveler":"carol@acme.com","segment_type":"air","origin":"BOM","destination":"DXB","date":"2024-02-01","cost_center":"CC_OPS","class":"economy"},
+  {"trip_id":"T003","traveler":"carol@acme.com","segment_type":"hotel","city":"Dubai","nights":2,"date":"2024-02-01","cost_center":"CC_OPS"},
+  {"trip_id":"T004","traveler":"dave@acme.com","segment_type":"car","origin":"London","destination":"Manchester","distance_km":320,"date":"2024-02-05","cost_center":"CC_SALES"},
+  {"trip_id":"T005","traveler":"eve@acme.com","segment_type":"car","origin":"Delhi","destination":"Agra","date":"2024-02-10","cost_center":"CC_OPS"}
+]

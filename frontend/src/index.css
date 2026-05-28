@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-bg-app: #F0F4FF;
+  --color-surface: #FFFFFF;
+  --color-surface-elevated: #F8FAFF;
+  --color-border-custom: #E2E8F4;
+  
+  --color-primary: #2563EB;
+  --color-primary-light: #EFF6FF;
+  --color-primary-dark: #1D4ED8;
+  
+  --color-accent: #0EA5E9;
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-danger: #EF4444;
+  
+  --color-text-primary: #0F172A;
+  --color-text-secondary: #475569;
+  --color-text-muted: #94A3B8;
+
+  --font-sans: 'Inter', sans-serif;
+  
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(37,99,235,0.08);
+  --shadow-hover: 0 8px 32px rgba(37,99,235,0.16);
+  --shadow-button: 0 2px 8px rgba(37,99,235,0.3);
+  --shadow-lift3d: 0 20px 60px rgba(37,99,235,0.15), 0 8px 24px rgba(0,0,0,0.08);
+  
+  --radius-cards: 16px;
+  --radius-buttons: 10px;
+  --radius-badges: 6px;
+  --radius-inputs: 10px;
+}
+
+body {
+  @apply bg-bg-app text-text-primary antialiased font-sans min-h-screen selection:bg-primary-light selection:text-primary;
+  margin: 0;
+}
+
+/* Headings style */
+h1, h2, h3, h4, h5, h6 {
+  @apply font-bold tracking-tight text-text-primary;
+}
+
+/* Custom label style */
+.label-custom {
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+}
+
+/* Gradients */
+.bg-hero-gradient {
+  background: linear-gradient(135deg, #EFF6FF 0%, #F0F9FF 50%, #F0FDF4 100%);
+}
+.bg-card-gradient {
+  background: linear-gradient(145deg, #FFFFFF 0%, #F8FAFF 100%);
+}
+.bg-primary-btn {
+  background: linear-gradient(135deg, #2563EB 0%, #0EA5E9 100%);
+}
+.bg-success-gradient {
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+}
+.bg-warning-gradient {
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+}
+.bg-danger-gradient {
+  background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+}
+.bg-sidebar-nav {
+  background: linear-gradient(180deg, #1E3A5F 0%, #1E40AF 50%, #0369A1 100%);
+}
+
+/* Animations & 3D effects */
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+.card-3d:hover {
+  transform: translateY(-6px) rotateX(2deg) rotateY(-1deg);
+  box-shadow: var(--shadow-lift3d);
+}
+
+.card-shine {
+  position: relative;
+  overflow: hidden;
+}
+.card-shine::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(
+    90deg, transparent, 
+    rgba(255,255,255,0.4), 
+    transparent
+  );
+  transform: skewX(-15deg);
+  transition: left 600ms ease;
+  pointer-events: none;
+}
+.card-shine:hover::before {
+  left: 120%;
+}
+
+.fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 400ms ease forwards;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.stagger-1 { animation-delay: 0ms; }
+.stagger-2 { animation-delay: 80ms; }
+.stagger-3 { animation-delay: 160ms; }
+.stagger-4 { animation-delay: 240ms; }
+
+.pulse-dot {
+  animation: pulseDot 2s infinite;
+}
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.6; transform: scale(1.15); }
+}
+
+.counter-animate {
+  transition: all 600ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Drifting Circles background animations */
+@keyframes driftCircle1 {
+  0%   { transform: translate(0px, 0px) scale(1); }
+  33%  { transform: translate(30px, -50px) scale(1.1); }
+  66%  { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+@keyframes driftCircle2 {
+  0%   { transform: translate(0px, 0px) scale(1); }
+  33%  { transform: translate(-40px, 40px) scale(0.9); }
+  66%  { transform: translate(40px, -20px) scale(1.1); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+@keyframes driftCircle3 {
+  0%   { transform: translate(0px, 0px) scale(1); }
+  33%  { transform: translate(20px, 30px) scale(1.05); }
+  66%  { transform: translate(-30px, -40px) scale(0.95); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+.drift-c1 {
+  animation: driftCircle1 60s infinite ease-in-out;
+}
+.drift-c2 {
+  animation: driftCircle2 60s infinite ease-in-out;
+}
+.drift-c3 {
+  animation: driftCircle3 60s infinite ease-in-out;
+}
+
+/* Row Hover styles */
+.row-hover-custom {
+  transition: background 150ms ease, transform 150ms ease;
+}
+.row-hover-custom:hover {
+  background-color: #F0F7FF !important;
+  transform: translateX(2px);
+}
+
+/* Shake Animation */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+.animate-shake {
+  animation: shake 500ms ease-in-out;
+}
+
+/* Checkmark pop in scale animation */
+@keyframes checkmarkPop {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.2); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.animate-checkmark {
+  animation: checkmarkPop 400ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Flag Modal entrance */
+@keyframes flagModalIn {
+  from { opacity: 0; transform: scale(0.95) translateY(8px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Explicit gradient utility classes (used via className in JSX) */
+.bg-primary-btn {
+  background: linear-gradient(135deg, #2563EB 0%, #0EA5E9 100%);
+}
+.bg-success-gradient {
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+}
+.bg-warning-gradient {
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+}
+.bg-danger-gradient {
+  background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+}
+.bg-hero-gradient {
+  background: linear-gradient(135deg, #EFF6FF 0%, #F0F9FF 50%, #F0FDF4 100%);
+}
+.bg-card-gradient {
+  background: linear-gradient(145deg, #FFFFFF 0%, #F8FAFF 100%);
+}
+
+/* Shadow utility classes */
+.shadow-card {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(37,99,235,0.08);
+}
+.shadow-button {
+  box-shadow: 0 2px 8px rgba(37,99,235,0.3);
+}
+
+

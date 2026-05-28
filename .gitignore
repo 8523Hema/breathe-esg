@@ -1,0 +1,40 @@
+# Dependency directories
+node_modules/
+jspm_packages/
+web_loaders/
+backend/venv/
+backend/.venv/
+
+# Build outputs
+dist/
+dist-ssr/
+*.local
+backend/staticfiles/
+
+# Logs and databases
+*.log
+backend/db.sqlite3
+backend/db.sqlite3-journal
+
+# Secrets and environment files
+.env
+.env.production
+.env.development
+.env.local
+.env.*.local
+.flaskenv
+backend/.env
+
+# IDE / System files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Python cache and temporary files
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/

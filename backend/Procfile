@@ -1,0 +1,2 @@
+release: python manage.py migrate && python manage.py load_sample_data
+web: gunicorn breathe_esg.wsgi --timeout 120
