@@ -59,21 +59,8 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* User Info + Logout (Desktop) */}
+        {/* User Info + Logout (Desktop) - REMOVED for frictionless prototype */}
         <div className="hidden md:flex items-center gap-4">
-          <div className="flex items-center gap-2 px-3 py-1.5 bg-[#F8FAFF] border border-[#E2E8F4] rounded-full text-[#475569] text-sm font-medium">
-            <User className="w-4 h-4 text-[#2563EB]" />
-            <span className="max-w-[120px] truncate">{displayUser}</span>
-          </div>
-          
-          <button
-            id="nav-logout"
-            onClick={logout}
-            className="flex items-center gap-1.5 px-3.5 py-2 rounded-[10px] text-sm font-semibold text-[#475569] hover:text-[#EF4444] hover:bg-[#FEF2F2] border border-transparent hover:border-[#FEE2E2] transition-all duration-200"
-          >
-            <LogOut className="w-4 h-4" />
-            <span>Logout</span>
-          </button>
         </div>
 
         {/* Mobile menu toggle */}
@@ -90,11 +77,6 @@ export default function Navbar() {
       {/* Mobile Drawer (Custom CSS) */}
       {mobileMenuOpen && (
         <div className="md:hidden border-t border-[#E2E8F4] bg-white px-4 py-4 space-y-3 shadow-lg fade-in-up">
-          <div className="flex items-center gap-2 px-3 py-2 bg-[#F8FAFF] border border-[#E2E8F4] rounded-xl text-[#475569] text-sm font-medium">
-            <User className="w-4 h-4 text-[#2563EB]" />
-            <span className="truncate">{displayUser}</span>
-          </div>
-          <div className="h-px bg-[#E2E8F4] my-2" />
           <nav className="flex flex-col gap-1">
             {navItems.map(({ to, label, Icon, end }) => (
               <NavLink
@@ -116,18 +98,6 @@ export default function Navbar() {
               </NavLink>
             ))}
           </nav>
-          <div className="h-px bg-[#E2E8F4] my-2" />
-          <button
-            id="nav-mobile-logout"
-            onClick={() => {
-              setMobileMenuOpen(false);
-              logout();
-            }}
-            className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-[10px] text-sm font-semibold text-[#EF4444] bg-[#FEF2F2] border border-[#FEE2E2] hover:bg-[#FEE2E2] transition"
-          >
-            <LogOut className="w-4 h-4" />
-            <span>Logout</span>
-          </button>
         </div>
       )}
     </header>
