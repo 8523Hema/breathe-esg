@@ -6,7 +6,8 @@ const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
 
 export const api = axios.create({
-  baseURL: (import.meta.env.DEV || !import.meta.env.VITE_API_URL) ? '/api' : `${import.meta.env.VITE_API_URL}/api`,
+  // Use VITE_API_URL when configured (production), fall back to Vite proxy in local dev
+  baseURL: import.meta.env.VITE_API_URL ? `${import.meta.env.VITE_API_URL}/api` : '/api',
 });
 
 export const AuthProvider = ({ children }) => {

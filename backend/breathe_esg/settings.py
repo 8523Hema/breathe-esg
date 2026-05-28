@@ -146,11 +146,14 @@ if os.path.exists(REACT_BUILD_DIR):
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# CORS Settings — allow Vite dev server and any configured origins
+# CORS Settings — allow Vite dev server, deployed Render frontend, and any env-configured origins
+_cors_extra = os.environ.get('CORS_ALLOWED_ORIGINS', '')
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
     'http://127.0.0.1:5173',
-]
+    # Deployed Render frontend
+    'https://breathe-esg-frontend-2v8n.onrender.com',
+] + [o.strip() for o in _cors_extra.split(',') if o.strip()]
 CORS_ALLOW_CREDENTIALS = True
 
 # Default primary key field type
