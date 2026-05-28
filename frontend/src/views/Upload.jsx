@@ -152,7 +152,8 @@ function UploadCard({ source }) {
     const form = new FormData();
     form.append('file', file);
     try {
-      const response = await fetch('/api' + endpoint, {
+      const apiBase = (import.meta.env.DEV || !import.meta.env.VITE_API_URL) ? '/api' : `${import.meta.env.VITE_API_URL}/api`;
+      const response = await fetch(apiBase + endpoint, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`
