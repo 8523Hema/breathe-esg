@@ -15,6 +15,47 @@ def main():
             "available on your PYTHONPATH environment variable? Did you "
             "forget to activate a virtual environment?"
         ) from exc
+
+    # Temporary Initialization for Render Deployments
+    try:
+        import django
+        django.setup()
+        
+        from django.db.models.signals import post_migrate
+        
+        def create_demo_users(sender, **kwargs):
+            from django.contrib.auth import get_user_model
+            User = get_user_model()
+            try:
+                # Create admin / admin123 (superuser)
+                if not User.objects.filter(username="admin").exists():
+                    User.objects.create_superuser("admin", "admin@acme.com", "admin123")
+                    print("Successfully created demo superuser: admin")
+                
+                # Create analyst / analyst123 (normal user)
+                if not User.objects.filter(username="analyst").exists():
+                    User.objects.create_user(
+                        username="analyst",
+                        email="analyst@acme.com",
+                        password="analyst123",
+                        is_staff=True
+                    )
+                    print("Successfully created demo analyst user: analyst")
+            except Exception:
+                pass
+
+        # 1. Register for migration runs
+        post_migrate.connect(create_demo_users)
+        
+        # 2. Try running immediately for server starts
+        try:
+            create_demo_users(None)
+        except Exception:
+            pass
+            
+    except Exception:
+        pass
+
     execute_from_command_line(sys.argv)
 
 
